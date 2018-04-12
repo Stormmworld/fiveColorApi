@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Data.SqlClient;
+using Newtonsoft.Json;
 
 namespace FiveColor.Model
 {
-    [Serializable]
     public class Card
     {
+        [JsonProperty(PropertyName = "enabled")]
         public bool enabled { get; set; }
+        [JsonProperty(PropertyName = "image")]
         public string image { get; set; }
+        [JsonProperty(PropertyName = "Name")]
         public string Name { get; set; }
+        [JsonProperty(PropertyName = "tapped")]
         public bool tapped { get; set; }
+        [JsonProperty(PropertyName = "Type")]
         public string Type { get; set; }
 
         public static Card FromDataReader(SqlDataReader reader) {

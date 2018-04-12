@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System.Net.Http.Headers;
+using System.Web.Http;
+using System.Web.UI.WebControls;
 
 namespace FiveColorApi.App_Start
 {
@@ -11,11 +13,12 @@ namespace FiveColorApi.App_Start
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                defaults: new { id = System.Web.Http.RouteParameter.Optional }
             );
         }
     }

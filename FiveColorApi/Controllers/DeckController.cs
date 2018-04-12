@@ -13,9 +13,9 @@ namespace FiveColorApi.Controllers
         [HttpGet]
         public Deck Get(int id)
         {
-            return MTG.GetDeck(id);
+            //return MTG.GetDeck(id);
 
-            //return Mock.GetMockDeck();
+            return Mock.GetMockDeck();
         }
     }
 }
