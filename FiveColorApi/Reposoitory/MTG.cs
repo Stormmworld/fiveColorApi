@@ -9,7 +9,8 @@ namespace FiveColor.Reposoitory
 {
     public class MTG
     {
-        const string CONNECTIONSTRING = "Data Source=HPPROLIANT;Initial Catalog=MTG;User Id=Sql_Mtg;Password = Mag!c;";
+        //const string CONNECTIONSTRING = "Data Source=HPPROLIANT;Initial Catalog=MTG;User Id=Sql_Mtg;Password = Mag!c;";
+        const string CONNECTIONSTRING = @"Server=localhost\SQLEXPRESS;Database=MTG;Trusted_Connection=True;";
 
         public static FiveColor.Model.Deck GetDeck(int id) {
             FiveColor.Model.Deck retVal = new FiveColor.Model.Deck();
@@ -55,6 +56,7 @@ namespace FiveColor.Reposoitory
                         Type = card.Types.Type.Type,
                         ManaProduction = new List<Mana>()
                     };
+                    if(card.ManaProduction!= null)
                     foreach (var mana in card.ManaProduction)
                     {
                         newCard.ManaProduction.Add(new Mana() { ManaType = mana.Abbreviation, Quantity = mana.Quantity });
