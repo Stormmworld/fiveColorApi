@@ -11,11 +11,11 @@ namespace FiveColorApi.Controllers
     public class DeckController : ApiController
     {
         [HttpGet]
-        public Deck Get(int id)
+        public FiveColor.Model.Deck Get(int id)
         {
-            //return MTG.GetDeck(id);
+            return MTG.GetDeck(id);
 
-            return Mock.GetMockDeck();
+            //return Mock.GetMockDeck();
         }
     }
 }

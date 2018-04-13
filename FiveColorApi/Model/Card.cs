@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace FiveColor.Model
 {
@@ -16,15 +17,17 @@ namespace FiveColor.Model
         public bool tapped { get; set; }
         [JsonProperty(PropertyName = "Type")]
         public string Type { get; set; }
+        [JsonProperty(PropertyName = "ManaProduction")]
+        public List<Mana> ManaProduction { get; set; }
 
-        public static Card FromDataReader(SqlDataReader reader) {
-            return new Card() {
-                enabled = true,
-                tapped= false,
-                image = reader["ImageUrl"].ToString(),
-                Name = reader["Name"].ToString(),
-                Type = reader["Type"].ToString()
-            };
-        }
+        //public static Card FromDataReader(SqlDataReader reader) {
+        //    return new Card() {
+        //        enabled = true,
+        //        tapped= false,
+        //        image = reader["ImageUrl"].ToString(),
+        //        Name = reader["Name"].ToString(),
+        //        Type = reader["Type"].ToString()
+        //    };
+        //}
     }
 }

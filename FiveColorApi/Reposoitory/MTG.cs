@@ -1,7 +1,9 @@
 ﻿using FiveColor.Model;
-using System.Collections.Generic;
+using System.IO;
 using System.Data;
 using System.Data.SqlClient;
+using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace FiveColor.Reposoitory
 {
@@ -9,12 +11,8 @@ namespace FiveColor.Reposoitory
     {
         const string CONNECTIONSTRING = "Data Source=HPPROLIANT;Initial Catalog=MTG;User Id=Sql_Mtg;Password = Mag!c;";
 
-        public static Deck GetDeck(int id) {
-            Deck retVal = new Deck()
-            {
-                Name = "",
-                Cards = new List<Card>()
-            };
+        public static FiveColor.Model.Deck GetDeck(int id) {
+            FiveColor.Model.Deck retVal = new FiveColor.Model.Deck();
 
             //get cards from database
             SqlConnection sqlConnection1 = new SqlConnection(CONNECTIONSTRING);
@@ -29,8 +27,42 @@ namespace FiveColor.Reposoitory
 
             reader = cmd.ExecuteReader();
 
-            while (reader.Read())
-                retVal.Cards.Add(Card.FromDataReader(reader));
+            //while (reader.Read())
+            //    retVal.Cards.Add(Card.FromDataReader(reader));
+
+            if (reader.Read())
+            {
+                Deck result;
+                var serializer = new XmlSerializer(typeof(Deck));
+
+                using (TextReader treader = new StringReader(reader[0].ToString()))
+                {
+                    result = (Deck)serializer.Deserialize(treader);
+                }
+
+                retVal = new Model.Deck() {
+                    Name = result.Name,
+                    Cards = new List<Card>()
+                };
+
+                foreach (DeckCard card in result.Cards)
+                {
+                    Card newCard = new Card() {
+                        enabled = true,
+                        image = card.ImageUrl,
+                        Name = card.Name,
+                        tapped = false,
+                        Type = card.Types.Type.Type,
+                        ManaProduction = new List<Mana>()
+                    };
+                    foreach (var mana in card.ManaProduction)
+                    {
+                        newCard.ManaProduction.Add(new Mana() { ManaType = mana.Abbreviation, Quantity = mana.Quantity });
+                    }
+
+                    retVal.Cards.Add(newCard);
+                }
+            }
 
             sqlConnection1.Close();
 
@@ -38,3 +70,4 @@ namespace FiveColor.Reposoitory
         }
     }
 }
+

@@ -100,7 +100,6 @@ F:\gitsrc\fiveColorApi\FiveColorApi\bin\roslyn\System.IO.Compression.dll
 F:\gitsrc\fiveColorApi\FiveColorApi\bin\roslyn\System.IO.FileSystem.dll
 F:\gitsrc\fiveColorApi\FiveColorApi\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
 F:\gitsrc\fiveColorApi\FiveColorApi\bin\roslyn\System.IO.FileSystem.Primitives.dll
-F:\gitsrc\fiveColorApi\FiveColorApi\bin\roslyn\System.IO.Pipes.AccessControl.dll
 F:\gitsrc\fiveColorApi\FiveColorApi\bin\roslyn\System.IO.Pipes.dll
 F:\gitsrc\fiveColorApi\FiveColorApi\bin\roslyn\System.Reflection.Metadata.dll
 F:\gitsrc\fiveColorApi\FiveColorApi\bin\roslyn\System.Security.AccessControl.dll
@@ -203,3 +202,4 @@ C:\gitsrc\fiveColorApi\FiveColorApi\bin\System.Web.Http.Cors.xml
 C:\gitsrc\fiveColorApi\FiveColorApi\bin\System.Web.Http.WebHost.xml
 C:\gitsrc\fiveColorApi\FiveColorApi\obj\Debug\FiveColorApi.dll
 C:\gitsrc\fiveColorApi\FiveColorApi\obj\Debug\FiveColorApi.csprojResolveAssemblyReference.cache
+F:\gitsrc\fiveColorApi\FiveColorApi\obj\Debug\FiveColorApi.csprojResolveAssemblyReference.cache
