@@ -15,8 +15,10 @@ namespace FiveColor.Model
         public string Name { get; set; }
         [JsonProperty(PropertyName = "tapped")]
         public bool tapped { get; set; }
-        [JsonProperty(PropertyName = "Type")]
-        public string Type { get; set; }
+        [JsonProperty(PropertyName = "Types")]
+        public List<string> Types { get; set; }
+        [JsonProperty(PropertyName = "ManaCost")]
+        public List<string> ManaCost { get; set; }
         [JsonProperty(PropertyName = "ManaProduction")]
         public List<Mana> ManaProduction { get; set; }
 

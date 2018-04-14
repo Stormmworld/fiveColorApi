@@ -14,13 +14,14 @@ namespace FiveColor.Mocker
                 image= "https://img.scryfall.com/cards/normal/en/leb/231.jpg",
                 Name= "Ankh of Mishra",
                 tapped=false,
-                Type="Artifact"
+                Types=new List<string>() { "Artifact" }
             };
         }
 
-        public static Deck GetMockDeck()
+        public static FiveColor.Model.Deck GetMockDeck()
         {
-            Deck retVal = new Deck()
+            
+            FiveColor.Model.Deck retVal = new FiveColor.Model.Deck()
             {
                 Cards = new List<Card>(),
                 Name = "Mock Deck"

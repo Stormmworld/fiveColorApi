@@ -9,8 +9,8 @@ namespace FiveColor.Reposoitory
 {
     public class MTG
     {
-        //const string CONNECTIONSTRING = "Data Source=HPPROLIANT;Initial Catalog=MTG;User Id=Sql_Mtg;Password = Mag!c;";
-        const string CONNECTIONSTRING = @"Server=localhost\SQLEXPRESS;Database=MTG;Trusted_Connection=True;";
+       const string CONNECTIONSTRING = "Data Source=HPPROLIANT;Initial Catalog=MTG;User Id=Sql_Mtg;Password = Mag!c;";
+         //const string CONNECTIONSTRING = @"Server=localhost\SQLEXPRESS;Database=MTG;Trusted_Connection=True;";
 
         public static FiveColor.Model.Deck GetDeck(int id) {
             FiveColor.Model.Deck retVal = new FiveColor.Model.Deck();
@@ -53,14 +53,22 @@ namespace FiveColor.Reposoitory
                         image = card.ImageUrl,
                         Name = card.Name,
                         tapped = false,
-                        Type = card.Types.Type.Type,
-                        ManaProduction = new List<Mana>()
+                        ManaCost = new List<string>(),
+                        ManaProduction = new List<Mana>(),
+                        Types = new List<string>()
                     };
-                    if(card.ManaProduction!= null)
-                    foreach (var mana in card.ManaProduction)
+                    if (card.Types != null)
+                        foreach (var type in card.Types)
+                            newCard.Types.Add(type.Type);
+                    if (card.ManaProduction != null)
+                        foreach (var mana in card.ManaProduction)
+                            newCard.ManaProduction.Add(new Mana() { ManaType = mana.Abbreviation, Quantity = mana.Quantity });
+                    if (card.ManaCost != null)
                     {
-                        newCard.ManaProduction.Add(new Mana() { ManaType = mana.Abbreviation, Quantity = mana.Quantity });
-                    }
+                        string cost = card.ManaCost.Mana.cost;
+                        cost = cost.Replace("{", "").Replace("}", ",").Replace(" ", "");
+                            newCard.ManaCost.Add(cost.Substring(0, cost.Length-1));
+                    }                   
 
                     retVal.Cards.Add(newCard);
                 }
