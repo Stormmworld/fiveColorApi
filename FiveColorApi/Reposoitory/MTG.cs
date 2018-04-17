@@ -50,6 +50,7 @@ namespace FiveColor.Reposoitory
                 {
                     Card newCard = new Card() {
                         enabled = true,
+                        Id = card.DeckCardId,
                         image = card.ImageUrl,
                         Name = card.Name,
                         tapped = false,

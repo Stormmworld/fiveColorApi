@@ -56,6 +56,8 @@ public partial class DeckCard
 
     private DeckCardManaCost manaCostField;
 
+    private byte deckCardIdField;
+
     private uint idField;
 
     private string imageUrlField;
@@ -122,6 +124,20 @@ public partial class DeckCard
         set
         {
             this.manaCostField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public byte DeckCardId
+    {
+        get
+        {
+            return this.deckCardIdField;
+        }
+        set
+        {
+            this.deckCardIdField = value;
         }
     }
 

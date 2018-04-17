@@ -9,6 +9,8 @@ namespace FiveColor.Model
     {
         [JsonProperty(PropertyName = "enabled")]
         public bool enabled { get; set; }
+        [JsonProperty(PropertyName = "Id")]
+        public int Id { get; set; }
         [JsonProperty(PropertyName = "image")]
         public string image { get; set; }
         [JsonProperty(PropertyName = "Name")]
