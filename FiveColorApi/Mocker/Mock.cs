@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using FiveColor.Model;
+﻿using System.Collections.Generic;
+using FiveColorApi.Model;
 
-namespace FiveColor.Mocker
+namespace FiveColorApi.Mocker
 {
     public static class Mock
     {
@@ -18,10 +16,10 @@ namespace FiveColor.Mocker
             };
         }
 
-        public static FiveColor.Model.Deck GetMockDeck()
+        public static Model.Deck GetMockDeck()
         {
-            
-            FiveColor.Model.Deck retVal = new FiveColor.Model.Deck()
+
+            Model.Deck retVal = new Model.Deck()
             {
                 Cards = new List<Card>(),
                 Name = "Mock Deck"
