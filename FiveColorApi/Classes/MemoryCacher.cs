@@ -26,5 +26,11 @@ namespace FiveColorApi.Classes
                 memoryCache.Remove(key);
             }
         }
+
+        public static bool Replace(string key, object value, DateTimeOffset absExpiration)
+        {
+            Delete(key);
+            return Add(key, value, absExpiration);
+        }
     }
 }

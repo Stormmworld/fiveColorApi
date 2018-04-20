@@ -106,9 +106,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\Enumerations.cs" />
     <Compile Include="Classes\MemoryCacher.cs" />
     <Compile Include="Classes\Request\CreateGameRequest.cs" />
+    <Compile Include="Classes\Request\JoinGameRequest.cs" />
     <Compile Include="Classes\Request\RetrieveGameRequest.cs" />
     <Compile Include="Classes\Response\CreateGameResponse.cs" />
     <Compile Include="Classes\Response\GraveyardResponse.cs" />
