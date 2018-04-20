@@ -157,10 +157,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\web.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -186,6 +182,7 @@
     <Compile Include="Classes\Request\CreateGameRequest.cs" />
     <Compile Include="Classes\Request\RetrieveGameRequest.cs" />
     <Compile Include="Classes\Response\CreateGameResponse.cs" />
+    <Compile Include="Classes\Response\GraveyardResponse.cs" />
     <Compile Include="Classes\Response\HandResponse.cs" />
     <Compile Include="Controllers\DeckController.cs" />
     <Compile Include="Controllers\GameController.cs" />
@@ -213,9 +210,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Game\" />
-    <Folder Include="Views\Hand\" />
-    <Folder Include="Views\Turn\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -220,3 +220,4 @@ C:\gitsrc\fiveColorApi\FiveColorApi\bin\System.Web.Razor.xml
 C:\gitsrc\fiveColorApi\FiveColorApi\bin\System.Web.WebPages.xml
 C:\gitsrc\fiveColorApi\FiveColorApi\bin\System.Web.WebPages.Deployment.xml
 C:\gitsrc\fiveColorApi\FiveColorApi\bin\System.Web.WebPages.Razor.xml
+C:\gitsrc\fiveColorApi\FiveColorApi\obj\Debug\FiveColorApi.csprojResolveAssemblyReference.cache
