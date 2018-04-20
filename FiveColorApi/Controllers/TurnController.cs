@@ -6,13 +6,13 @@ namespace FiveColorApi.Controllers
     public class TurnController : ApiController
     {
         [HttpGet]
-        public GraveyardResponse GetGraveyard(int gameId, int playerId)
+        public GraveyardResponse GetGraveyard(string gameId, int playerId)
         {
 
             return new GraveyardResponse();
         }
         [HttpGet]
-        public HandResponse GetHand(int gameId, int playerId, int drawCount)
+        public HandResponse GetHand(string gameId, int playerId, int drawCount)
         {
 
             return new HandResponse();

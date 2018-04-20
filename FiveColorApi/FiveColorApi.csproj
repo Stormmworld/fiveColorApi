@@ -114,6 +114,9 @@
     <Compile Include="Classes\Response\GraveyardResponse.cs" />
     <Compile Include="Classes\Response\HandResponse.cs" />
     <Compile Include="Controllers\DeckController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\HandController.cs" />
+    <Compile Include="Controllers\TurnController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
