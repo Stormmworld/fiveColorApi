@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FiveColorApi.Classes.Enumerations;
 using FiveColorApi.Model;
 using Newtonsoft.Json;
 
@@ -8,6 +9,8 @@ namespace FiveColorApi.Model
     {
         [JsonProperty(PropertyName = "Library")]
         public List<Card> Library { get; set; }
+        [JsonProperty(PropertyName = "Library")]
+        public LoseCondition LoseCondition { get; set; }
         [JsonProperty(PropertyName = "Graveyard")]
         public List<Card> Graveyard { get; set; }
         [JsonProperty(PropertyName = "Hand")]

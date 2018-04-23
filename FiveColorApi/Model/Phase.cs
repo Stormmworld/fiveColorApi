@@ -9,8 +9,8 @@ namespace FiveColorApi.Model
         [JsonProperty(PropertyName = "PlayerId")]
         public int CurrentPlayerId { get; set; }
         [JsonProperty(PropertyName = "PhaseName")]
-        public string PhaseName { get; set; }
+        public Classes.Enumerations.Phase PhaseName { get; set; }
         [JsonProperty(PropertyName = "SubPhaseName")]
-        public string SubPhaseName { get; set; }
+        public Classes.Enumerations.SubPhase SubPhaseName { get; set; }
     }
 }

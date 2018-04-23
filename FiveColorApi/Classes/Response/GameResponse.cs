@@ -7,6 +7,8 @@ namespace FiveColorApi.Classes.Response
 {
     public class GameResponse
     {
+        [JsonProperty(PropertyName = "CurrentPhase")]
+        public Phase CurrentPhase { get; set; }
         [JsonProperty(PropertyName = "Id")]
         public Guid Id { get; set; }
         [JsonProperty(PropertyName = "Name")]
