@@ -49,8 +49,6 @@ namespace FiveColorApi.Classes
         }
         public void EndPhase()
         {
-            if (nextPlayer == null)
-                nextPlayer = new Player();
             switch (Phase.PhaseName)
             {
                 case Enumerations.Phase.Beginning:
@@ -94,7 +92,7 @@ namespace FiveColorApi.Classes
                     Phase.PhaseName = Enumerations.Phase.Ending;
                     break;
                 case Enumerations.Phase.Ending:
-                    EndTurn(nextPlayer);
+                    EndTurn();
                     break;
             }
         }
@@ -105,7 +103,6 @@ namespace FiveColorApi.Classes
             Phase.SubPhaseName = SubPhase.Untap;
             Phase.CurrentPlayer = nextPlayer.Stats.Name;
             Phase.CurrentPlayerId = nextPlayer.Stats.Id;
-
         }
         public Player GetNextPlayer()
         {
@@ -113,18 +110,26 @@ namespace FiveColorApi.Classes
             {
                 if (Players[i].Stats.Id == Phase.CurrentPlayerId)
                 {
-                    if (i < (Players.Count - 1))
-                    {
-                        if (Players[i + 1].LoseCondition == LoseCondition.None)
-                            return Players[i + 1];
-                        else
-                        {
-                            
-                        }
-                    }
+                    for (int j = i + 1; j < Players.Count; j++) // check next element to end of list
+                        if (Players[j].LoseCondition == LoseCondition.None)
+                            return Players[j];
+                    for (int j = 0; j < i; j++)//check first element until the current element 
+                        if (Players[j].LoseCondition == LoseCondition.None)
+                            return Players[j];
+                    break;//end search for current player
                 }
             }
             throw new Exception("Next Player not found");
+        }
+        public List<Card> GetUpkeepCards()
+        {
+            List<Card> retVal = new List<Card>();
+
+            foreach (Player player in Players)
+                foreach (Card card in player.BattleField)
+                    if(card.Effects.FirstOrDefault(o=>o.Triggers.Contains(Trigger.Upkeep)) != null)
+                            retVal.Add(card);
+            return retVal;
         }
         #endregion
     }

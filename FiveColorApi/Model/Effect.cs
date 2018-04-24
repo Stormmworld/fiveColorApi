@@ -6,6 +6,8 @@ namespace FiveColorApi.Model
 {
     public class Effect
     {
+        [JsonProperty(PropertyName = "Optional")]
+        public bool Optional { get; set; }
         [JsonProperty(PropertyName = "Triggers")]
         public List<Trigger> Triggers { get; set; }
         [JsonProperty(PropertyName = "TargetOwner")]

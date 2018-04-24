@@ -7,6 +7,8 @@ namespace FiveColorApi.Model
 {
     public class Player
     {
+        [JsonProperty(PropertyName = "BattleField")]
+        public List<Card> BattleField { get; set; }
         [JsonProperty(PropertyName = "Library")]
         public List<Card> Library { get; set; }
         [JsonProperty(PropertyName = "LoseCondition")]
