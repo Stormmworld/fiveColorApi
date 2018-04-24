@@ -37,7 +37,7 @@ namespace FiveColorApi.Controllers
         [HttpGet]
         public GameResponse RetrieveGame([FromUri] RetrieveGameRequest request)
         {
-            Game game = (Game) MemoryCacher.GetValue(request.Id);
+            Game game = (Game)MemoryCacher.GetValue(request.Id);
 
             return new GameResponse()
             {
@@ -50,7 +50,7 @@ namespace FiveColorApi.Controllers
         [HttpGet]
         public GameResponse JoinGame([FromUri] JoinGameRequest request)
         {
-            Game game = (Game) MemoryCacher.GetValue(request.GameId);
+            Game game = (Game)MemoryCacher.GetValue(request.GameId);
             game.Players.Add(Database.GetPlayer(request.PlayerId));
             MemoryCacher.Replace(game.Id.ToString(), game, DateTimeOffset.UtcNow.AddHours(1));
             return new GameResponse()
@@ -64,26 +64,19 @@ namespace FiveColorApi.Controllers
         [HttpGet]
         public GameResponse EndCurrentPhase([FromUri] EndPhaseRequest request)
         {
-            Game game = (Game) MemoryCacher.GetValue(request.GameId);
-            try
-            {
-                #region Check for events that happen at end of current phase
-                #endregion
-                game.EndPhase(); //add next plaer to this call
-                #region Check for events that happen at beginning of new phase
-                if (game.Phase.SubPhaseName == SubPhase.Draw)
-                    game.DrawPhase();
-                #endregion
-            }
-            catch (Exception e)
-            {
-                if (e.Message == "Death")
-                {
+            Game game = (Game)MemoryCacher.GetValue(request.GameId);
 
-                }
-                else
-                    throw;
-            }
+            #region Check for events that happen at end of current phase
+
+            #endregion
+
+            game.EndPhase();
+
+            #region Check for events that happen at beginning of new phase
+            if (game.Phase.SubPhaseName == SubPhase.Draw)
+                game.DrawPhase();
+            #endregion
+
             MemoryCacher.Replace(game.Id.ToString(), game, DateTimeOffset.UtcNow.AddHours(1));
             return new GameResponse()
             {

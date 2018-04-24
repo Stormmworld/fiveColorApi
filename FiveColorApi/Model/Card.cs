@@ -5,6 +5,8 @@ namespace FiveColorApi.Model
 {
     public class Card
     {
+        [JsonProperty(PropertyName = "Effects")]
+        public List<Effect> Effects { get; set; }
         [JsonProperty(PropertyName = "enabled")]
         public bool enabled { get; set; }
         [JsonProperty(PropertyName = "Id")]

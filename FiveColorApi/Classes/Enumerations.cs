@@ -1,5 +1,14 @@
 ﻿namespace FiveColorApi.Classes.Enumerations
 {
+    public enum Action
+    {
+        None,
+        DealDamage,
+        AddLife,
+        PreventDamage,
+        DrawXCards,
+        Destroy,
+    }
     public enum Locations
     {
         None = 0,
@@ -14,6 +23,14 @@
     {
         None,
         NocardsInLibrary,
+    }
+    public enum Owner
+    {
+        None,
+        Any,
+        Yours,
+        Opponents,
+        All,
     }
     public enum Phase
     {
@@ -34,5 +51,30 @@
         AttackDeclaration,
         DefenseDeclaration,
         DamageResolution,
+    }
+    public enum TargetType
+    {
+        None,
+        Artifact,
+        Land,
+        Creature,
+        Planeswalker,
+        Player,
+        Enchantment,
+        Equipment,
+        Permanent,
+        Hand,
+        Library,
+        Self,
+    }
+    public enum Trigger
+    {
+        None,
+        EnterBattleField,
+        Tap,
+        TakesDamage,
+        DealsDamage,
+        DealsDamageToPlayer,
+        Upkeep,
     }
 }

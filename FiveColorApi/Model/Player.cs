@@ -9,7 +9,7 @@ namespace FiveColorApi.Model
     {
         [JsonProperty(PropertyName = "Library")]
         public List<Card> Library { get; set; }
-        [JsonProperty(PropertyName = "Library")]
+        [JsonProperty(PropertyName = "LoseCondition")]
         public LoseCondition LoseCondition { get; set; }
         [JsonProperty(PropertyName = "Graveyard")]
         public List<Card> Graveyard { get; set; }
