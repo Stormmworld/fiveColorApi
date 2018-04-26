@@ -20,46 +20,11 @@ namespace FiveColorApi.Controllers
                 Phase = new Phase(),
                 Id = Guid.NewGuid(),
                 Name = request.GameName,
-                Players = new List<Player>()
-                {
-                    Database.GetPlayer(request.PlayerId)
-                }
+                Players = new List<Player>() { Database.GetPlayer(request.PlayerId) },
+                Status = Status.WaitingRoom
             };
             MemoryCacher.Replace(newGame.Id.ToString(), newGame, DateTimeOffset.UtcNow.AddHours(1));
-            return new GameResponse()
-            {
-                CurrentPhase = newGame.Phase,
-                Id = newGame.Id,
-                Name = newGame.Name,
-                Players = newGame.Players
-            };
-        }
-        [HttpGet]
-        public GameResponse RetrieveGame([FromUri] RetrieveGameRequest request)
-        {
-            Game game = (Game)MemoryCacher.GetValue(request.Id);
-
-            return new GameResponse()
-            {
-                CurrentPhase = game.Phase,
-                Id = game.Id,
-                Name = game.Name,
-                Players = game.Players
-            };
-        }
-        [HttpGet]
-        public GameResponse JoinGame([FromUri] JoinGameRequest request)
-        {
-            Game game = (Game)MemoryCacher.GetValue(request.GameId);
-            game.Players.Add(Database.GetPlayer(request.PlayerId));
-            MemoryCacher.Replace(game.Id.ToString(), game, DateTimeOffset.UtcNow.AddHours(1));
-            return new GameResponse()
-            {
-                CurrentPhase = game.Phase,
-                Id = game.Id,
-                Name = game.Name,
-                Players = game.Players
-            };
+            return new GameResponse(newGame);
         }
         [HttpGet]
         public GameResponse EndCurrentPhase([FromUri] EndPhaseRequest request)
@@ -78,13 +43,40 @@ namespace FiveColorApi.Controllers
             #endregion
 
             MemoryCacher.Replace(game.Id.ToString(), game, DateTimeOffset.UtcNow.AddHours(1));
-            return new GameResponse()
-            {
-                CurrentPhase = game.Phase,
-                Id = game.Id,
-                Name = game.Name,
-                Players = game.Players
-            };
+            return new GameResponse(game);
+        }
+        [HttpGet]
+        public GameResponse JoinGame([FromUri] JoinGameRequest request)
+        {
+            Game game = (Game)MemoryCacher.GetValue(request.GameId);
+            game.Players.Add(Database.GetPlayer(request.PlayerId));
+            MemoryCacher.Replace(game.Id.ToString(), game, DateTimeOffset.UtcNow.AddHours(1));
+            return new GameResponse(game);
+        }
+        [HttpGet]
+        public GameResponse RetrieveGame([FromUri] RetrieveGameRequest request)
+        {
+            Game game = (Game)MemoryCacher.GetValue(request.Id);
+
+            return new GameResponse(game);
+        }
+        [HttpGet]
+        public GameResponse SelectDeck([FromUri] SelectDeckRequest request)
+        {
+            Game game = (Game)MemoryCacher.GetValue(request.GameId);
+
+            game.Selectdeck(request.PlayerId, request.DeckId);
+
+            MemoryCacher.Replace(game.Id.ToString(), game, DateTimeOffset.UtcNow.AddHours(1));
+
+            return new GameResponse(game);
+        }
+        [HttpGet]
+        public GameResponse StartGame([FromUri] SelectDeckRequest request)
+        {
+            Game game = (Game)MemoryCacher.GetValue(request.GameId);
+            game.Status = Status.Active;
+            return new GameResponse(game);
         }
     }
 }

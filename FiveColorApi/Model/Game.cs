@@ -25,6 +25,8 @@ namespace FiveColorApi.Classes
         public Phase Phase { get; set; }
         [JsonProperty(PropertyName = "Rules")]
         public Rules Rules { get; set; }
+        [JsonProperty(PropertyName = "Status")]
+        public Status Status { get; set; }
         #endregion 
 
         #region Methods
@@ -130,6 +132,10 @@ namespace FiveColorApi.Classes
                     if(card.Effects.FirstOrDefault(o=>o.Triggers.Contains(Trigger.Upkeep)) != null)
                             retVal.Add(card);
             return retVal;
+        }
+        public void Selectdeck(int playerId, long deckId)
+        {
+
         }
         #endregion
     }

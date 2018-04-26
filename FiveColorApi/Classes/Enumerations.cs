@@ -9,6 +9,13 @@
         DrawXCards,
         Destroy,
     }
+    public enum Format
+    {
+        None,
+        All,
+        FiveColor,
+        Standard
+    }
     public enum Locations
     {
         None = 0,
@@ -51,6 +58,12 @@
         AttackDeclaration,
         DefenseDeclaration,
         DamageResolution,
+    }
+    public enum Status
+    {
+        None,
+        WaitingRoom,
+        Active
     }
     public enum TargetType
     {
