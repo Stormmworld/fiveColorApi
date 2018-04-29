@@ -19,7 +19,7 @@ namespace FiveColorApi.Controllers
         [HttpGet]
         public GetDecksResponse GetDecks(GetDecksRequest request)
         {
-
+            return Repository.Deck.GetDecks(request.Format, request.MyDecksOnly? request.PlayerId: -1);
         }
     }
 }

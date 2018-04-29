@@ -1,5 +1,5 @@
 
-CREATE PROCEDURE get_Decks
+CREATE PROCEDURE p_Get_Decks
 			 @FormatSupported Varchar(50) = null
 			,@CreatedByPlayerId BIGINT = 0
 AS
