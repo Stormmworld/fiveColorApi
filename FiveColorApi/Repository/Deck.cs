@@ -122,6 +122,13 @@ namespace FiveColorApi.Repository
         {
             return new List<Format>();
         }
+
+        public static void SaveDeck(long deckId, int playerId, List<long> cardIds, string name) {
+            if (deckId > 0)//deck exixts, Update
+            { }
+            else //deck does not exist, create it
+            { }
+        }
     }
 }
 
